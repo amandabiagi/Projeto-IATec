@@ -1,0 +1,27 @@
+mat-form-field{
+  display: block;
+
+}
+
+mat-card{
+  margin-top: 10vh;
+  margin-left: 20vw;
+  width: 60vw;
+  box-shadow: 0 0 0 0;
+}
+
+mat-toolbar{
+  margin-bottom:2vh;
+}
+
+.cadastrar:hover{
+  transition: 1s;
+  background: #54d1b9;
+}
+
+.cancelar:hover{
+  transition: 1s;
+  background: #cc435d;
+}
+
+

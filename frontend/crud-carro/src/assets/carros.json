@@ -1,0 +1,10 @@
+[
+  {
+  "modelo": "Onix",
+  "marca": "Chevrolet",
+  "quantidadePortas":4,
+  "tipoCambio": "Automatico",
+  "anoFabricado": 2015,
+  "tipoCombustivel": "Alcool"
+  }
+  ]
