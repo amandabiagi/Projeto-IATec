@@ -29,7 +29,7 @@ export class CarrosService {
   }
 
   listarPorModelo(modelo: string){
-    console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+
        return this.httpClient.get<Carro[]>(this.API + modelo)
      .pipe(
        first(),
