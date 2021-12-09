@@ -1,3 +1,5 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
 <mat-card>
   <mat-toolbar color="primary">
     <span>Carros cadastrados</span>
@@ -8,13 +10,16 @@
       aria-label="Example icon-button with heart icon"
       (click)="irForm()"
     >
-      <span class="material-icons-round"> add_box </span>
+    <span class="material-icons md-light add">
+      add_circle_outline
+      </span>
+
     </button>
 
     <form class="form-busca" [formGroup]="idForm">
       <mat-form-field class="example-full-width" appearance="fill" >
         <mat-label>Modelo</mat-label>
-        <input matInput placeholder="Digite o modelo" formControlName="id"/>
+        <input matInput placeholder="Digite o modelo" formControlName="modelo"/>
       </mat-form-field>
 
       <button
@@ -22,15 +27,19 @@
         mat-icon-button
         class="example-icon favorite-icon"
         aria-label="Example icon-button with heart icon"
-        (click)="onSubmit()">
+        (click)="buscarUm()">
 
-        <span class="material-icons-round"> search </span>
+        <span class="material-icons">
+          search
+          </span>
+
       </button>
     </form>
   </mat-toolbar>
 
   <div *ngIf="carros$ | async as carros; else carregando">
     <table mat-table [dataSource]="carros" class="mat-elevation-z8">
+
       <!-- Modelo Column -->
       <ng-container matColumnDef="modelo">
         <th mat-header-cell *matHeaderCellDef>Modelo</th>
@@ -90,7 +99,10 @@
             mat-icon-button
             class="example-icon favorite-icon"
             aria-label="Example icon-button with heart icon"
-            (click)="onDelete(carro.id)"
+
+
+
+             (click)="onDelete(carro.id)"
           >
             <span class="material-icons">delete_forever</span>
           </button>
@@ -102,9 +114,12 @@
     </table>
   </div>
 
-  <ng-template #carregando>
+  <ng-template #carregando class="carregando">
     <div class="carregando-spinner">
       <mat-spinner></mat-spinner>
+      <p>Carregando informações...</p>
     </div>
   </ng-template>
 </mat-card>
+
+

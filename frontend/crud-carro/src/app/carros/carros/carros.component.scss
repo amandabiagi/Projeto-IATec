@@ -1,24 +1,27 @@
+
 table {
   width: 100%;
 }
 
 .carregando-spinner{
-  padding: 25px;
+
+
   background: rgba(0,0,0, 0.15);
   display: flex;
-  align-items: center;
-  justify-content: center;
+
 }
 
+
+
 button{
-  background: rgba(255, 255, 255, 0);
+  background: none;
   border: none;
 
 }
 
 button :hover{
-  transition: 1s;
-  border-bottom: 1px solid #673AB7 ;
+  transition: 0.5s;
+  border-bottom: 2px solid #fff ;
 }
 
 mat-toolbar{
@@ -49,6 +52,21 @@ mat-toolbar{
     justify-content: flex-end;
     }
   }
+
+  .material-icons{
+    padding: 8px;
+    padding-top: 12px;
+    color: #fff;
+
+  }
+
+  .add{
+    font-size: 48px;
+  }
+
+
+
+
 
 
 

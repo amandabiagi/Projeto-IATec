@@ -2,10 +2,11 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ErrorDialogComponent } from './../../shared/components/error-dialog/error-dialog.component';
 import { CarrosService } from './../services/carros.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { Carro } from '../model/carro';
 import { catchError, Observable, of } from 'rxjs';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+
 
 @Component({
   selector: 'app-carros',
@@ -33,10 +34,11 @@ export class CarrosComponent implements OnInit {
     private fb: FormBuilder,
     private carrosService: CarrosService,
     public dialog: MatDialog,
-    router: Router
+    router: Router,
+
+
   ) {
     this.router = router;
-
     this.carros$ = this.carrosService.listarTodos().pipe(
       catchError((error) => {
         this.onError('Erro ao carregar carros cadastrados');
@@ -64,24 +66,31 @@ export class CarrosComponent implements OnInit {
     this.router.navigate(['form/editar/', id], { relativeTo: this.route });
   }
 
-  buscarUm(modelo: string) {
-    this.carrosService.listarPorId(modelo);
-  }
-
-  ngOnInit(): void {
-    this.idForm = this.fb.group({
-      id: [null, []],
-    });
-  }
-
-  onSubmit() {
-    const { id } = this.idForm.value;
-    console.log(id);
-    this.carros$ = this.carrosService.listarPorId(id).pipe(
+  buscarUm() {
+    const { modelo } = this.idForm.value;
+    this.carros$ = this.carrosService.listarPorModelo(modelo).pipe(
       catchError((error) => {
         this.onError('Erro ao carregar carros cadastrados');
         return of([]);
       })
     );
   }
+
+  ngOnInit(): void {
+
+    this.idForm = this.fb.group({
+      modelo: [null, []],
+    });
+  }
+
+  onSubmit() {
+
+  }
+
+  abrirAlertaDeletar(id:number){
+    this.dialog.open(MatDialog);
+  }
 }
+
+
+

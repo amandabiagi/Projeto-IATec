@@ -20,7 +20,6 @@ export class CarrosService {
   constructor(private httpClient: HttpClient) { }
 
   listarTodos(){
-
     return this.httpClient.get<Carro[]>(this.API )
     .pipe(
       first(),
@@ -29,11 +28,9 @@ export class CarrosService {
 
   }
 
-  listarPorId(modelo: string){
-    console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
-    console.log(modelo)
-
-    return this.httpClient.get<Carro[]>(this.API + modelo)
+  listarPorModelo(modelo: string){
+    console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+       return this.httpClient.get<Carro[]>(this.API + modelo)
      .pipe(
        first(),
        delay(2),
@@ -53,8 +50,6 @@ export class CarrosService {
   }
 
   editarCarro(id:number, carro:any){
-    console.log("meeeeeeeeeeeeeeeeeeeeeeeeee")
-    console.log(carro)
     const url = `${this.API}${id}`;
 
     return this.httpClient.put(url, carro,this.httpOptions);
